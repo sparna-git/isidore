@@ -1,0 +1,385 @@
+@prefix schema: <http://schema.org/> .
+@prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skosthes: <http://purl.org/iso25964/skos-thes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix isidore: <http://isidore.science/> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix xls2rdf: <https://xls2rdf.sparna.fr/vocabulary#> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix isishapes: <http://isidore.science/shapes/> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+
+isidore:shapes a owl:Ontology, skos:ConceptScheme;
+  dcterms:source <https://docs.google.com/spreadsheets/d/1agVVLh6Am0-4pz7-PzjcJm8RcJ1MWqUu>;
+  dcterms:format <https://xls2rdf.sparna.fr/rest/convert?url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1agVVLh6Am0-4pz7-PzjcJm8RcJ1MWqUu%2Fexport%3Fformat%3Dxlsx&noPostProcessings=true>;
+  skos:hasTopConcept isishapes:Collection_aggregates, isishapes:Collection_type, isishapes:Collection_identifier,
+    isishapes:Collection_title, isishapes:Collection_altLabel, isishapes:Collection_publisher,
+    isishapes:Collection_homepage, isishapes:Collection_seeAlso, isishapes:Collection_logo,
+    isishapes:Collection_description, isishapes:Collection_isAggregatedBy, isishapes:Document_type,
+    isishapes:Document_title, isishapes:Document_description, isishapes:Document_creator,
+    isishapes:Document_date, isishapes:Document_contributor, isishapes:Document_subject,
+    isishapes:Document_publisher, isishapes:Document_coverage, isishapes:Document_relation,
+    isishapes:Document_spatial, isishapes:Document_isPartOf, isishapes:Document_provenance,
+    isishapes:Document_language, isishapes:Document_topic, isishapes:Document_references,
+    isishapes:Document_seeAlso, isishapes:Document_similarTo, isishapes:Document_aggregates,
+    isishapes:Document_identifier, isishapes:Agent_name, isishapes:Agent_familyName, isishapes:Agent_givenName,
+    isishapes:Agent_homepage, isishapes:Agent_mbox .
+
+isishapes:Collection a sh:NodeShape;
+  volipi:iconName "fa-solid fa-box-archive";
+  sh:targetClass isidore:Collection;
+  rdfs:label "Collection"@en, "Collection"@fr;
+  sh:property isishapes:Collection_aggregates, isishapes:Collection_type, isishapes:Collection_identifier,
+    isishapes:Collection_title, isishapes:Collection_altLabel, isishapes:Collection_publisher,
+    isishapes:Collection_homepage, isishapes:Collection_seeAlso, isishapes:Collection_logo,
+    isishapes:Collection_description, isishapes:Collection_isAggregatedBy .
+
+isishapes:Document a sh:NodeShape;
+  volipi:iconName "fa-solid fa-file-text";
+  sh:targetClass isidore:Document;
+  rdfs:label "Document"@en, "Document"@fr;
+  sh:property isishapes:Document_type, isishapes:Document_title, isishapes:Document_description,
+    isishapes:Document_creator, isishapes:Document_date, isishapes:Document_contributor,
+    isishapes:Document_subject, isishapes:Document_publisher, isishapes:Document_coverage,
+    isishapes:Document_relation, isishapes:Document_spatial, isishapes:Document_isPartOf,
+    isishapes:Document_provenance, isishapes:Document_language, isishapes:Document_topic,
+    isishapes:Document_references, isishapes:Document_seeAlso, isishapes:Document_similarTo,
+    isishapes:Document_aggregates, isishapes:Document_identifier .
+
+isishapes:Agent a sh:NodeShape;
+  volipi:iconName "fa-solid fa-male";
+  sh:targetClass foaf:Agent;
+  rdfs:label "Agent"@en, "Agent"@fr;
+  sh:property isishapes:Agent_name, isishapes:Agent_familyName, isishapes:Agent_givenName,
+    isishapes:Agent_homepage, isishapes:Agent_mbox .
+
+isishapes:Scope a sh:NodeShape;
+  volipi:iconName "fa-solid fa-circle-question";
+  sh:targetClass isidore:Scope;
+  rdfs:label "Scope"@en, "Périmètre"@fr .
+
+isishapes:Ontology a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass isidore:Ontology;
+  rdfs:label "Ontology"@en, "Ontologie"@fr .
+
+isishapes:Organization a sh:NodeShape;
+  volipi:iconName "fa-solid fa-building";
+  sh:targetClass isidore:Organization;
+  rdfs:label "Organization"@en, "Organisation"@fr .
+
+isishapes:Source a sh:NodeShape;
+  volipi:iconName "fa-solid fa-location-dot";
+  sh:targetClass isidore:Source;
+  rdfs:label "Source"@en, "Source"@fr .
+
+isishapes:Collection_aggregates a skos:Concept;
+  sh:path ore:aggregates;
+  sh:name "aggregates"@en;
+  sh:nodeKind sh:IRI;
+  sh:node isishapes:Document;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_type a skos:Concept;
+  sh:path rdf:type, dcterms:type;
+  sh:name "type"@en;
+  sh:nodeKind sh:IRI, sh:Literal;
+  sh:node isishapes:Scope;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_identifier a skos:Concept;
+  sh:path dcterms:identifier;
+  sh:name "identifier"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_title a skos:Concept;
+  sh:path dcterms:title;
+  sh:name "title"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_altLabel a skos:Concept;
+  sh:path skos:altLabel;
+  sh:name "altLabel"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_publisher a skos:Concept;
+  sh:path dcterms:publisher;
+  sh:name "publisher"@en;
+  sh:nodeKind sh:IRI;
+  sh:node isishapes:Agent;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_homepage a skos:Concept;
+  sh:path foaf:homepage;
+  sh:name "homepage"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_seeAlso a skos:Concept;
+  sh:path rdfs:seeAlso;
+  sh:name "seeAlso"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_logo a skos:Concept;
+  sh:path foaf:logo;
+  sh:name "logo"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_description a skos:Concept;
+  sh:path dcterms:description;
+  sh:name "description"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Collection_isAggregatedBy a skos:Concept;
+  sh:path ore:isAggregatedBy;
+  sh:name "isAggregatedBy"@en;
+  sh:nodeKind sh:IRI;
+  sh:node isishapes:Document;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_type a skos:Concept;
+  sh:path rdf:type, dc:type;
+  sh:name "type"@en;
+  sh:nodeKind sh:IRI, sh:Literal;
+  sh:node isishapes:Scope, isishapes:Ontology;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_title a skos:Concept;
+  sh:path dcterms:title;
+  sh:name "title"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_description a skos:Concept;
+  sh:path dc:description;
+  sh:name "description"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_creator a skos:Concept;
+  sh:path dcterms:creator;
+  sh:name "creator"@en;
+  sh:nodeKind sh:IRI;
+  sh:node isishapes:Agent;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_date a skos:Concept;
+  sh:path dc:date, dcterms:date;
+  sh:name "date"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:date;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_contributor a skos:Concept;
+  sh:path dc:contributor;
+  sh:name "contributor"@en;
+  sh:nodeKind sh:IRI;
+  sh:node isishapes:Agent;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_subject a skos:Concept;
+  sh:path dc:subject, dcterms:subject;
+  sh:name "subject"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString, xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_publisher a skos:Concept;
+  sh:path dcterms:publisher;
+  sh:name "publisher"@en;
+  sh:nodeKind sh:IRI;
+  sh:node isishapes:Agent;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_coverage a skos:Concept;
+  sh:path dcterms:coverage, dc:coverage;
+  sh:name "coverage"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string, rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_relation a skos:Concept;
+  sh:path dc:relation;
+  sh:name "relation"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_spatial a skos:Concept;
+  sh:path dcterms:spatial;
+  sh:name "spatial"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_isPartOf a skos:Concept;
+  sh:path dcterms:isPartOf;
+  sh:name "isPartOf"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_provenance a skos:Concept;
+  sh:path dcterms:provenance;
+  sh:name "provenance"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_language a skos:Concept;
+  sh:path dcterms:language;
+  sh:name "language"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_topic a skos:Concept;
+  sh:path sioc:topic;
+  sh:name "topic"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_references a skos:Concept;
+  sh:path dcterms:references;
+  sh:name "references"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_seeAlso a skos:Concept;
+  sh:path rdfs:seeAlso;
+  sh:name "seeAlso"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_similarTo a skos:Concept;
+  sh:path ore:similarTo;
+  sh:name "similarTo"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_aggregates a skos:Concept;
+  sh:path ore:aggregates;
+  sh:name "aggregates"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Document_identifier a skos:Concept;
+  sh:path dcterms:identifier;
+  sh:name "identifier"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Agent_name a skos:Concept;
+  sh:path foaf:name;
+  sh:name "name"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Agent_familyName a skos:Concept;
+  sh:path foaf:familyName;
+  sh:name "familyName"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Agent_givenName a skos:Concept;
+  sh:path foaf:givenName;
+  sh:name "givenName"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Agent_homepage a skos:Concept;
+  sh:path foaf:homepage;
+  sh:name "homepage"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
+
+isishapes:Agent_mbox a skos:Concept;
+  sh:path foaf:mbox;
+  sh:name "mbox"@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  skos:inScheme isidore:shapes;
+  skos:topConceptOf isidore:shapes .
