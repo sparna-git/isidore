@@ -31,6 +31,8 @@ shape:Collection_inScheme
 shape:Document_hasPart
         sh:datatype  xsd:string ;
         sh:name      "hasPart"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:hasPart .
 
@@ -60,8 +62,10 @@ shape:ConceptScheme_created_datatype_0
         sh:datatype  xsd:date .
 
 shape:Source  rdf:type  sh:NodeShape ;
-        rdfs:label      "Source"@en ;
+        rdfs:label      "Source"@en, "Source"@fr ;
         sh:property     shape:Source_topic , shape:Source_isPartOf , shape:Source_publisher , shape:Source_type , shape:Source_title , shape:Source_homepage , shape:Source_identifier , shape:Source_altLabel , shape:Source_description ;
+        rdfs:comment "Une source dans Isidore représente un blog, une base de données, un fonds d'archive, un périodique ou toute autre corpus moissonné par le moteur de recherche Isidore (en OAI-PMH). Une source est un conteneur de documents. Les sources sont elles-mêmes aggrégées dans des Collections via ore:isAggregatedBy. La base contient environ 13000 sources."@fr;
+        sh:agentInstruction "Quand tu dois lister des sources, ramène leur dct:title, dct:type et le dct:title de leur dct:publisher (dct:publisher/dct:title). Tu peux aussi ramener leur dct:identifier aggrégé avec un group_concat si l'utilisateur veut un ISSN ou un ARK. Le lien entre une Source et une Collection est dct:isPartOf."@fr;
         sh:targetClass  isidore:Source .
 
 shape:Feature_alternateName_datatype_1
@@ -83,12 +87,17 @@ shape:Document_created_2
         sh:datatype  <https://www.w3.org/2001/XMLSchema#date> ;
         sh:maxCount  1 ;
         sh:name      "created"@en ;
+        sh:name "date de création"@fr ;
+        sh:description "Date de création du document, une seule valeur possible."@fr ;
+        sh:agentInstruction "On peut comparer avec une comparaison formelle avec un xsd:date."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      <http://purl.org/dc/terms/created> .
 
 shape:Document_identifierdoi
         sh:datatype  xsd:string ;
         sh:name      "identifierdoi"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:identifierdoi .
 
@@ -113,6 +122,8 @@ shape:Document_dc_ressourcetype
         sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:name      "dc_ressourcetype"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:dc_ressourcetype .
 
@@ -166,6 +177,8 @@ shape:Concept_note  sh:name  "note"@en ;
 shape:Document_conformsTo
         sh:name      "conformsTo"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:name "conforme à"@fr ;
+        sh:description "Métadonnée littérale, telle que fournie par la source."@fr ;
         sh:or        ( shape:Document_conformsTo_datatype_0 shape:Document_conformsTo_datatype_1 ) ;
         sh:path      <http://purl.org/dc/terms/conformsTo> .
 
@@ -193,13 +206,19 @@ shape:Concept_notation_datatype_2
 
 shape:Document_isPartOf_2
         sh:name      "isPartOf"@en ;
+        sh:name "fait partie de"@fr ;
+        sh:description "Métadonné IRI, telle que fournie par la source."@fr ;
+        sh:agentInstruction "Il y a aussi dc:isPartOf pour des valeurs littérales.";
         sh:nodeKind  sh:IRI ;
         sh:path      <http://purl.org/dc/terms/isPartOf> .
 
 shape:Document_isAggregatedBy
         sh:name      "isAggregatedBy"@en ;
         sh:nodeKind  sh:IRI ;
-        sh:or        ( shape:Document_isAggregatedBy_class_0 shape:Document_isAggregatedBy_class_1 shape:Document_isAggregatedBy_class_2 shape:Document_isAggregatedBy_class_3 shape:Document_isAggregatedBy_class_4 ) ;
+        sh:name "source (du document)"@fr ;
+        sh:description "Donne le lien entre un document et la source dont il est issu"@fr ;
+        sh:agentInstruction ""@fr ;
+        sh:class isidore:Source ;
         sh:path      ore:isAggregatedBy .
 
 shape:Document_aggregates_class_2
@@ -211,6 +230,9 @@ shape:Feature_prefLabel_datatype_0
 shape:Document_tableOfContents_2
         sh:name      "tableOfContents"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:name "table des matières"@fr ;
+        sh:description "Métadonnée littérale, telle que fournie par la source."@fr ;
+        sh:agentInstruction "Eventuellement utile pour des recherche dans le contenu"@fr ;
         sh:or        ( shape:Document_tableOfContents_2_datatype_0 shape:Document_tableOfContents_2_datatype_1 ) ;
         sh:path      <http://purl.org/dc/terms/tableOfContents> .
 
@@ -241,6 +263,8 @@ shape:Document_audience_2_datatype_0
 shape:Document_pages  sh:datatype  xsd:string ;
         sh:name      "pages"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:pages .
 
 shape:Source_notation
@@ -256,6 +280,8 @@ shape:Document_extent
         sh:maxCount  1 ;
         sh:name      "extent"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:name "taille du document"@fr ;
+        sh:description "Métadonnée littérale, telle que fournie par la source."@fr ;
         sh:path      dc:extent .
 
 shape:Document_references_literal_datatype_1
@@ -272,6 +298,9 @@ shape:Feature_shortName_datatype_1
 shape:Document_similarTo
         sh:datatype  xsd:string ;
         sh:name      "similarTo"@en ;
+        sh:name "autres identifiants non-adressables"@fr ;
+        sh:description "Autres identifiants non-adressables tels que fournis par le producteur. Le contenu de ce champs n'est pas très clair."@fr ;
+        sh:agentInstruction "Le contenu de ce champs n'est pas très clair et peut être ignoré sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      ore:similarTo .
 
@@ -307,6 +336,8 @@ shape:Document_grantnumber
         sh:datatype  xsd:string ;
         sh:name      "grantnumber"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:grantnumber .
 
 shape:Concept_locationMap
@@ -324,6 +355,8 @@ shape:Feature_prefLabel
 shape:Document_language
         sh:name      "language"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:name "langue du document"@fr ;
+        sh:description "Métadonnée littérale, telle que fournie par la source."@fr ;
         sh:or        ( shape:Document_language_datatype_0 shape:Document_language_datatype_1 ) ;
         sh:path      dc:language .
 
@@ -390,11 +423,17 @@ shape:Document_issued
         sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:name      "issued"@en ;
+        sh:name "date de publication du document"@fr ;
+        sh:description "Métadonnée littérale, telle que fournie par la source."@fr ;
+        sh:agentInstruction "Attention c'est en xsd:string non-normalisé, pas en xsd:date"@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:issued .
 
 shape:Document  rdf:type  sh:NodeShape ;
         rdfs:label      "Document"@en ;
+        rdfs:label      "Document"@fr ;
+        rdfs:comment "Les entrées principales indexées par Isidore. Les documents sont récupérés par un moissonnage automatique des sources, par exemple en OAI-PMH. La base Isidore contient environ 7,6 millions de notices documentaires."@fr ;
+        sh:agentInstruction "Pour lister des documents, on peut afficher leur dct:title. Le lien entre un Document et sa Source est ore:isAggregatedBy. La plupart des métadonnées étant récupérées automatiquement, leur qualité peut être inégale."@fr ;
         sh:property     shape:Document_rightsHolder_2 , shape:Document_grantproject , shape:Document_created , shape:Document_instructionalMethod , shape:Document_description , shape:Document_modified_2 , shape:Document_educationLevel , shape:Document_language , shape:Document_grantprogram , shape:Document_format_2 , shape:Document_medium , shape:Document_alternative , shape:Document_redirect , shape:Document_replaces , shape:Document_relation , shape:Document_provenance , shape:Document_dc_ressourcetype , shape:Document_isRequiredBy , shape:Document_references , shape:Document_isFormatOf , shape:Document_subjectClassification , shape:Document_grantnumber , shape:Document_date_2 , shape:Document_type , shape:Document_tableOfContents_2 , shape:Document_contibutor , shape:Document_date , shape:Document_abstractotherlanguage , shape:Document_extent , shape:Document_subject , shape:Document_aggregates , shape:Document_conformsTo , shape:Document_dateAccepted , shape:Document_isPartOf_2 , shape:Document_dateCopyrighted , shape:Document_bibliographicCitation_2 , shape:Document_number , shape:Document_identifierdoi , shape:Document_coverage , shape:Document_embargoDate , shape:Document_contributor , shape:Document_acronym , shape:Document_issued , shape:Document_name , shape:Document_isVersionOf , shape:Document_audience , shape:Document_url , shape:Document_relationisPublisherOf , shape:Document_isPartOf , shape:Document_source , shape:Document_preview_page , shape:Document_bibliographicCitation , shape:Document_modified , shape:Document_topic , shape:Document_available , shape:Document_spatial , shape:Document_seriesnumber , shape:Document_relationisPublishedBy , shape:Document_relationisFundedBy , shape:Document_temporal , shape:Document_tableOfContents , shape:Document_website , shape:Document_similarTo , shape:Document_isAggregatedBy , shape:Document_hasPart_2 , shape:Document_coverage_2 , shape:Document_collection , shape:Document_license_2 , shape:Document_rights , shape:Document_creator , shape:Document_rightsHolder , shape:Document_relationisPartOfBook , shape:Document_placepublication , shape:Document_accessRights , shape:Document_requires , shape:Document_hasVersion , shape:Document_audience_2 , shape:Document_alternateIdentifier , shape:Document_relationhasChapter , shape:Document_language_2 , shape:Document_notes , shape:Document_title , shape:Document_imprint , shape:Document_autodoi , shape:Document_format , shape:Document_relationisbn , shape:Document_license , shape:Document_pages , shape:Document_extent_2 , shape:Document_hasPart , shape:Document_subject_2 , shape:Document_provenance_2 , shape:Document_isReferencedBy , shape:Document_identifier , shape:Document_publisher ;
         sh:targetClass  isidore:Document .
 
@@ -413,6 +452,9 @@ shape:Source_publisher
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:name      "publisher"@en ;
+        sh:name "éditeur (de la source)"@fr;
+        sh:description "Organisation qui est l'éditeur / le fournisseur de la source."@fr ;
+        sh:agentInstruction "Les organisations ont elles-mêmes un nom (dct:title), une adresse mail, une homepage et un pays, optionnellement des synonymes."@fr ;
         sh:nodeKind  sh:IRI ;
         sh:path      <http://purl.org/dc/terms/publisher> .
 
@@ -445,6 +487,8 @@ shape:Document_autodoi
         sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:name      "autodoi"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:autodoi .
 
@@ -467,6 +511,9 @@ shape:Source_type  sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:name      "type"@en ;
+        sh:name "type (de la source)"@fr;
+        sh:description "Une liste contrôlée d'une quainzaine de valeurs texte qui indique le type de la source."@fr ;
+        sh:agentInstruction "Les valeurs possibles sont données dans le modèle SHACL."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      <http://purl.org/dc/terms/type> .
 
@@ -479,6 +526,9 @@ shape:ConceptScheme_subject
 shape:Document_date  sh:datatype  xsd:string ;
         sh:name      "date"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:name "date"@fr ;
+        sh:description "Métadonnée littérale, telle que fournie par la source."@fr ;
+        sh:agentInstruction "Attention c'est en xsd:string non-normalisé, pas en xsd:date"@fr ;
         sh:path      dc:date .
 
 shape:Concept_isPartOf
@@ -490,6 +540,8 @@ shape:Concept_isPartOf
 shape:Document_name  sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:name      "name"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:name .
 
@@ -508,6 +560,8 @@ shape:Document_subjectClassification
         sh:datatype  xsd:string ;
         sh:name      "subjectClassification"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:subjectClassification .
 
 shape:Source_issued  sh:datatype  xsd:string ;
@@ -536,13 +590,12 @@ shape:Theme_created  sh:datatype  xsd:string ;
         sh:nodeKind  sh:Literal ;
         sh:path      <http://purl.org/dc/terms/created> .
 
-shape:Document_isAggregatedBy_class_0
-        sh:class  isidore:Source .
-
 shape:Document_grantprogram
         sh:datatype  xsd:string ;
         sh:name      "grantprogram"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:grantprogram .
 
 shape:Image_creator  sh:datatype  xsd:string ;
@@ -555,6 +608,8 @@ shape:Source_homepage
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:name      "homepage"@en ;
+        sh:name "page d'accueil (de la source)"@fr;
+        sh:description "URL d'une page pour la source."@fr ;
         sh:nodeKind  sh:IRI ;
         sh:path      foaf:homepage .
 
@@ -568,6 +623,9 @@ shape:Concept_long  sh:name  "long"@en ;
 
 shape:Document_title  sh:name  "title"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:name "titre du document"@fr ;
+        sh:description "Métadonnée littérale, telle que fournie par la source."@fr ;
+        sh:agentInstruction "A utiliser comme libellé d'affichage principal du document dans des résultat. Attention il n'est pas toujours présent, bien mettre un OPTIONAL."@fr ;
         sh:or        ( shape:Document_title_datatype_0 shape:Document_title_datatype_1 ) ;
         sh:path      <http://purl.org/dc/terms/title> .
 
@@ -640,6 +698,8 @@ shape:Document_contributor
         sh:datatype  xsd:string ;
         sh:name      "contributor"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:name "contributeur du document"@fr ;
+        sh:description "Métadonnée littérale, telle que fournie par la source."@fr ;
         sh:path      dc:contributor .
 
 shape:Collection_microThesaurusOf
@@ -673,6 +733,9 @@ shape:Concept_prefLabel_datatype_0
 shape:Document_subject_2
         sh:name      "subject"@en ;
         sh:nodeKind  sh:IRI ;
+        sh:name "sujet d'un document (normalisé)"@fr ;
+        sh:description "Métadonnée issue d'un enrichissement sur les référentiels Isidore."@fr ;
+        sh:agentInstruction "A utiliser avec des URI issues d'une réconciliations. Les valeurs sont des skos:Concept avec un skos:prefLabel si besoin d'afficher les libellés des sujets à l'utilisateur."@fr ;
         sh:or        ( shape:Document_subject_2_class_0 shape:Document_subject_2_class_1 ) ;
         sh:path      <http://purl.org/dc/terms/subject> .
 
@@ -702,6 +765,8 @@ shape:Document_relationhasChapter
         sh:datatype  xsd:string ;
         sh:name      "relationhasChapter"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:relationhasChapter .
 
 shape:ConceptScheme_created
@@ -800,6 +865,8 @@ shape:Document_collection
         sh:datatype  xsd:string ;
         sh:name      "collection"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:collection .
 
 shape:ThesaurusArray  rdf:type  sh:NodeShape ;
@@ -830,6 +897,8 @@ shape:Concept_alternateName_datatype_1
 shape:Document_url  sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:name      "url"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:url .
 
@@ -882,6 +951,8 @@ shape:Document_relationisPartOfBook
         sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:name      "relationisPartOfBook"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:relationisPartOfBook .
 
@@ -908,6 +979,8 @@ shape:ConceptScheme_contributor_datatype_1
 shape:Document_contibutor
         sh:datatype  xsd:string ;
         sh:name      "contibutor"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:contibutor .
 
@@ -990,6 +1063,8 @@ shape:Feature_officialName_datatype_1
 shape:Document_relationisFundedBy
         sh:datatype  xsd:string ;
         sh:name      "relationisFundedBy"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:relationisFundedBy .
 
@@ -1022,9 +1097,6 @@ shape:Feature_locationMap
         sh:name      "locationMap"@en ;
         sh:nodeKind  sh:IRI ;
         sh:path      geonames:locationMap .
-
-shape:Document_isAggregatedBy_class_2
-        sh:class  isidore-subject:primaires .
 
 shape:Concept_hiddenLabel
         sh:datatype    rdf:langString ;
@@ -1158,6 +1230,8 @@ shape:Document_imprint
         sh:datatype  xsd:string ;
         sh:name      "imprint"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:imprint .
 
 shape:Concept_hasCloseExternalAuthority
@@ -1200,6 +1274,9 @@ shape:ConceptScheme_license
 shape:Document_aggregates
         sh:name      "aggregates"@en ;
         sh:nodeKind  sh:IRI ;
+        sh:name      "URI(s) producteur"@en ;
+        sh:description "Le contenu de cet attribut n'est pas clair, cela pourrait être une ou plusieurs URIs telles que fournies par la source d'origine du document."@fr ;
+        sh:agentInstruction "Ce attribut peut sans doute être ignoré."@fr ;
         sh:or        ( shape:Document_aggregates_class_0 shape:Document_aggregates_class_1 shape:Document_aggregates_class_2 ) ;
         sh:path      ore:aggregates .
 
@@ -1214,6 +1291,8 @@ shape:Document_placepublication
         sh:maxCount  1 ;
         sh:name      "placepublication"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:placepublication .
 
 shape:ThesaurusArray_prefLabel
@@ -1229,6 +1308,8 @@ shape:Source_altLabel
         sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:name      "altLabel"@en ;
+        sh:name "autre nom (de la source)"@fr;
+        sh:description "Une autre appellation pour la source, par exemple un acronyme de projet."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      skos:altLabel .
 
@@ -1376,12 +1457,16 @@ shape:Concept_domaineLitteral
         sh:datatype  xsd:string ;
         sh:name      "domaineLitteral"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      bnf-onto:domaineLitteral .
 
 shape:Document_acronym
         sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:name      "acronym"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:acronym .
 
@@ -1427,6 +1512,8 @@ shape:Document_embargoDate
         sh:datatype  xsd:string ;
         sh:maxCount  1 ;
         sh:name      "embargoDate"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:embargoDate .
 
@@ -1440,6 +1527,9 @@ shape:Source_identifier
         sh:datatype  xsd:string ;
         sh:minCount  1 ;
         sh:name      "identifier"@en ;
+        sh:name "identifiant (de la source)"@fr;
+        sh:description "Un identifiant pour la source, qui peut être un ISSN de revue ou un ARK"@fr ;
+        sh:agentInstruction "A utiliser pour chercher quand un utilisateur connait l'identifiant de la source."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      <http://purl.org/dc/terms/identifier> .
 
@@ -1495,6 +1585,8 @@ shape:Document_relationisPublishedBy
         sh:datatype  xsd:string ;
         sh:name      "relationisPublishedBy"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:relationisPublishedBy .
 
 shape:Feature_parentCountry
@@ -1545,9 +1637,6 @@ shape:Agent_givenName
         sh:name      "givenName"@en ;
         sh:nodeKind  sh:Literal ;
         sh:path      foaf:givenName .
-
-shape:Document_isAggregatedBy_class_4
-        sh:class  isidore-subject:secondaires .
 
 shape:Concept_historyNote
         sh:name      "historyNote"@en ;
@@ -1671,6 +1760,9 @@ shape:Source_title  dash:propertyRole  dash:LabelRole ;
         sh:languageIn      ( "ar" "de" "en" "es" "fr" "he" "it" "pt" "vi" ) ;
         sh:minCount        1 ;
         sh:name            "title"@en ;
+        sh:name "nom (de la source)"@fr;
+        sh:description "Nom dans la langue d'origine de la source"@fr ;
+        sh:agentInstruction "Libellé d'affichage principal d'une source. Permet de retrouver une source en cherchant dans son nom."@fr ;
         sh:nodeKind        sh:Literal ;
         sh:path            <http://purl.org/dc/terms/title> .
 
@@ -1684,6 +1776,8 @@ shape:Document_redirect
         sh:datatype  xsd:string ;
         sh:name      "redirect"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:redirect .
 
 shape:ConceptScheme_created_datatype_1
@@ -1839,6 +1933,9 @@ shape:Source_description
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:name      "description"@en ;
+        sh:name "description (de la source)"@fr;
+        sh:description "Une description en texte libre de la revue, du projet ou programme de recherche ou de la base de données, etc."@fr ;
+        sh:agentInstruction "Peut être utilisée pour des recherche de source en plein-texte"@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      <http://purl.org/dc/terms/description> .
 
@@ -1869,6 +1966,8 @@ shape:Document_grantproject
         sh:datatype  xsd:string ;
         sh:name      "grantproject"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:grantproject .
 
 shape:Image_title  sh:datatype  xsd:string ;
@@ -1964,6 +2063,8 @@ shape:Document_website
         sh:maxCount  1 ;
         sh:name      "website"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:website .
 
 shape:Concept_modified_datatype_1
@@ -2022,6 +2123,8 @@ shape:Document_abstractotherlanguage
         sh:datatype  xsd:string ;
         sh:name      "abstractotherlanguage"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:abstractotherlanguage .
 
 shape:Collection_created
@@ -2081,9 +2184,6 @@ shape:Feature_sameAs  sh:maxCount  1 ;
         sh:nodeKind  sh:IRI ;
         sh:path      owl:sameAs .
 
-shape:Document_isAggregatedBy_class_1
-        sh:class  isidore-subject:evenementielles .
-
 shape:Concept_alternateName
         sh:name      "alternateName"@en ;
         sh:nodeKind  sh:Literal ;
@@ -2100,6 +2200,8 @@ shape:Document_relationisbn
         sh:datatype  xsd:string ;
         sh:name      "relationisbn"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:relationisbn .
 
 shape:Concept_shortName
@@ -2131,6 +2233,9 @@ shape:Document_provenance
 
 shape:Source_topic  sh:class  skos:Concept ;
         sh:name      "topic"@en ;
+        sh:name "sujet (de la source)"@fr;
+        sh:description ""@fr ;
+        sh:agentInstruction ""@fr ;
         sh:nodeKind  sh:IRI ;
         sh:path      sioc:topic .
 
@@ -2216,6 +2321,9 @@ shape:Source_isPartOf
         sh:maxCount  1 ;
         sh:minCount  1 ;
         sh:name      "isPartOf"@en ;
+        sh:name "fait partie de la Collection"@fr;
+        sh:description "Lien entre la Source et la Collection"@fr ;
+        sh:agentInstruction "A utiliser pour naviguer entre les Sources et les Collections."@fr ;
         sh:nodeKind  sh:IRI ;
         sh:path      <http://purl.org/dc/terms/isPartOf> .
 
@@ -2343,6 +2451,8 @@ shape:Concept_created_datatype_0
 shape:Document_notes  sh:datatype  xsd:string ;
         sh:name      "notes"@en ;
         sh:nodeKind  sh:Literal ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:path      dc:notes .
 
 shape:Document_dateAccepted
@@ -2389,6 +2499,8 @@ shape:ConceptScheme_format
 shape:Document_number
         sh:datatype  xsd:string ;
         sh:name      "number"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:number .
 
@@ -2464,8 +2576,6 @@ shape:Concept_parentCountry
         sh:nodeKind  sh:IRI ;
         sh:path      geonames:parentCountry .
 
-shape:Document_isAggregatedBy_class_3
-        sh:class  isidore-subject:publications .
 
 shape:Concept_altLabel_datatype_0
         sh:datatype  rdf:langString .
@@ -2482,12 +2592,16 @@ shape:ConceptScheme_title_datatype_0
 shape:Document_relationisPublisherOf
         sh:datatype  xsd:string ;
         sh:name      "relationisPublisherOf"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:relationisPublisherOf .
 
 shape:Document_alternateIdentifier
         sh:datatype  xsd:string ;
         sh:name      "alternateIdentifier"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:alternateIdentifier .
 
