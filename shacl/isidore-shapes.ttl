@@ -736,7 +736,7 @@ shape:Document_subject_2
         sh:name "sujet d'un document (normalisé)"@fr ;
         sh:description "Métadonnée issue d'un enrichissement sur les référentiels Isidore."@fr ;
         sh:agentInstruction "A utiliser avec des URI issues d'une réconciliations. Les valeurs sont des skos:Concept avec un skos:prefLabel si besoin d'afficher les libellés des sujets à l'utilisateur."@fr ;
-        sh:or        ( shape:Document_subject_2_class_0 shape:Document_subject_2_class_1 ) ;
+        sh:class  skos:Concept ;
         sh:path      <http://purl.org/dc/terms/subject> .
 
 shape:Document_rightsHolder_2_datatype_1
@@ -744,9 +744,6 @@ shape:Document_rightsHolder_2_datatype_1
 
 shape:Collection_created_datatype_1
         sh:datatype  xsd:string .
-
-shape:Document_subject_2_class_0
-        sh:class  skos:Concept .
 
 shape:Document_dateCopyrighted
         sh:maxCount  1 ;
@@ -1218,11 +1215,16 @@ shape:Concept_page  sh:class  skos:Concept ;
 shape:Document_tableOfContents
         sh:datatype  xsd:string ;
         sh:name      "tableOfContents"@en ;
+        sh:description "Identifiant incorrect utilisé par une ou plusieurs source."@fr ;
+        sh:agentInstruction "A ignorer, sauf si l'utilisateur cherche explicitement dessus."@fr ;
         sh:nodeKind  sh:Literal ;
         sh:path      dc:tableOfContents .
 
 shape:Document_topic  sh:class  skos:Concept ;
         sh:name      "topic"@en ;
+        sh:name "discipline du document"@fr;
+        sh:description "Métadonnée issue d'un enrichissement sur une liste normalisée de disciplines (Littératures, Psychologie, Religions, etc.)"@fr ;
+        sh:agentInstruction "Les disciplines sont une liste contrôlée d'une vingtaine de valeurs qui peut être présentée à l'utilisateur"@fr ;
         sh:nodeKind  sh:IRI ;
         sh:path      sioc:topic .
 
@@ -2288,9 +2290,6 @@ shape:Collection_label_datatype_1
 
 shape:Concept_prefLabel_datatype_1
         sh:datatype  xsd:string .
-
-shape:Document_subject_2_class_1
-        sh:class  skos-xl:Label .
 
 shape:Concept_citationNote
         sh:datatype  xsd:string ;
