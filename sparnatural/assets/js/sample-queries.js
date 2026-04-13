@@ -332,5 +332,129 @@ var queries = [
       ],
       "limit": 1000
     }
+  },
+  {
+    label_en: "Sources of the documents of an author",
+    label_fr: "Sources des documents d'un auteur",
+    query: {
+      "distinct": true,
+      "variables": [
+        {
+          "expression": {
+            "type": "aggregate",
+            "aggregation": "count",
+            "distinct": false,
+            "expression": {
+              "termType": "Variable",
+              "value": "Document"
+            }
+          },
+          "variable": {
+            "termType": "Variable",
+            "value": "Document_count"
+          }
+        },
+        {
+          "termType": "Variable",
+          "value": "Source"
+        }
+      ],
+      "order": null,
+      "branches": [
+        {
+          "line": {
+            "s": "Document",
+            "p": "http://isidore.science/shapes/Document_creator",
+            "o": "Agent",
+            "sType": "http://isidore.science/shapes/Document",
+            "oType": "http://isidore.science/shapes/Agent",
+            "criterias": [
+              {
+                "label": "Émile Provendier",
+                "criteria": {
+                  "rdfTerm": {
+                    "type": "uri",
+                    "value": "http://isidore.science/a/provendier_emile"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "line": {
+            "s": "Document",
+            "p": "http://isidore.science/shapes/Document_isAggregatedBy",
+            "o": "Source",
+            "sType": "http://isidore.science/shapes/Document",
+            "oType": "http://isidore.science/shapes/Source",
+            "criterias": []
+          }
+        }
+      ],
+      "limit": 1000
+    }
+  },
+  {
+    label_en: "Subjects of the documents of an author",
+    label_fr: "Sujets des documents d'un auteur",
+    query: {
+      "distinct": true,
+      "variables": [
+        {
+          "expression": {
+            "type": "aggregate",
+            "aggregation": "count",
+            "distinct": false,
+            "expression": {
+              "termType": "Variable",
+              "value": "Document"
+            }
+          },
+          "variable": {
+            "termType": "Variable",
+            "value": "Document_count"
+          }
+        },
+        {
+          "termType": "Variable",
+          "value": "Subject"
+        }
+      ],
+      "order": null,
+      "branches": [
+        {
+          "line": {
+            "s": "Document",
+            "p": "http://isidore.science/shapes/Document_dctsubject",
+            "o": "Subject",
+            "sType": "http://isidore.science/shapes/Document",
+            "oType": "http://isidore.science/shapes/Subject",
+            "criterias": []
+          }
+        },
+        {
+          "line": {
+            "s": "Document",
+            "p": "http://isidore.science/shapes/Document_creator",
+            "o": "Agent",
+            "sType": "http://isidore.science/shapes/Document",
+            "oType": "http://isidore.science/shapes/Agent",
+            "criterias": [
+              {
+                "label": "Émile Provendier",
+                "criteria": {
+                  "rdfTerm": {
+                    "type": "uri",
+                    "value": "http://isidore.science/a/provendier_emile"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "limit": 1000
+    }
   }
 ];
