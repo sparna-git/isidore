@@ -2,6 +2,7 @@
 @prefix cc:              <http://creativecommons.org/ns#> .
 @prefix dash:            <http://datashapes.org/dash#> .
 @prefix dc:              <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms:         <http://purl.org/dc/terms/> .
 @prefix foaf:            <http://xmlns.com/foaf/0.1/> .
 @prefix gemet-schema:    <http://www.eionet.europa.eu/gemet/2004/06/gemet-schema.rdf#> .
 @prefix geonames:        <http://www.geonames.org/ontology#> .
@@ -184,6 +185,9 @@ shape:Document_conformsTo
 
 shape:Concept  rdf:type  sh:NodeShape ;
         rdfs:label      "Concept"@en ;
+        rdfs:label      "Concept (vocabulaire contrôlé)"@fr ;
+        rdfs:comment "Une entrée dans un vocabulaire contrôlé utilisé par Isidore, typiquement LCSH, Rameau, BNE, Pactols, etc."@fr ;
+        sh:agentInstruction "Pour afficher ou liste des Concepts, on peut utiliser skos:prefLabel comme libellé d'affichage principal. Les libellés sont des litéraux avec une langue, à filtrer en fonction de la langue de l'utilisateur. Le vocabulaire d'appartenance du Concept peut se déterminer à partir de la forme de l'URI du Concept."@fr ;
         sh:property     shape:Concept_alt , shape:Concept_hasCloseExternalAuthority , shape:Concept_hasWikipediaArticle , shape:Concept_parentCountry , shape:Concept_deprecated , shape:Concept_altLabel_2 , shape:Concept_countryCode , shape:Concept_scopeNote , shape:Concept_long , shape:Concept_parentFeature , shape:Concept_broaderPartitive , shape:Concept_label , shape:Concept_creator , shape:Concept_P625 , shape:Concept_subordinateArray , shape:Concept_broader , shape:Concept_source , shape:Concept_broaderGeneric , shape:Concept_citationNote , shape:Concept_narrowerInstantial , shape:Concept_identifier_2 , shape:Concept_sameEEAGlossary , shape:Concept_altLabel , shape:Concept_hiddenLabel , shape:Concept_wikipediaArticle , shape:Concept_inScheme , shape:Concept_narrower , shape:Concept_narrowerGeneric , shape:Concept_featureClass , shape:Concept_hasBibliography , shape:Concept_focus , shape:Concept_domaineLitteral , shape:Concept_lat , shape:Concept_citationSource , shape:Concept_relatedHasPart , shape:Concept_broaderInstantial , shape:Concept_sameAs , shape:Concept_isPartOf , shape:Concept_officialName , shape:Concept_isMemberOfMADSCollection , shape:Concept_contributor , shape:Concept_locationMap , shape:Concept_postalCode , shape:Concept_editorialNote_2 , shape:Concept_neighbouringFeatures , shape:Concept_broadMatch , shape:Concept_seeAlso , shape:Concept_relatedMatch , shape:Concept_seeAlso_2 , shape:Concept_example , shape:Concept_featureCode , shape:Concept_closeMatch , shape:Concept_narrowMatch , shape:Concept_definition , shape:Concept_alternateName , shape:Concept_historyNote , shape:Concept_hasRelatedAuthority , shape:Concept_identifier , shape:Concept_exactMatch , shape:Concept_changeNote , shape:Concept_shortName , shape:Concept_source_2 , shape:Concept_prefLabel , shape:Concept_P61160 , shape:Concept_note , shape:Concept_notation , shape:Concept_isDefinedBy , shape:Concept_editorialNote , shape:Concept_isReplacedBy , shape:Concept_FRBNF , shape:Concept_population , shape:Concept_related , shape:Concept_id , shape:Concept_narrowerPartitive , shape:Concept_created , shape:Concept_domaine , shape:Concept_replaces , shape:Concept_modified , shape:Concept_page , shape:Concept_name , shape:Concept_topConceptOf , shape:Concept_childrenFeatures , shape:Concept_memberOf ;
         sh:targetClass  skos:Concept .
 
@@ -433,7 +437,7 @@ shape:Document  rdf:type  sh:NodeShape ;
         rdfs:label      "Document"@en ;
         rdfs:label      "Document"@fr ;
         rdfs:comment "Les entrées principales indexées par Isidore. Les documents sont récupérés par un moissonnage automatique des sources, par exemple en OAI-PMH. La base Isidore contient environ 7,6 millions de notices documentaires."@fr ;
-        sh:agentInstruction "Pour lister des documents, on peut afficher leur dct:title. Le lien entre un Document et sa Source est ore:isAggregatedBy. La plupart des métadonnées étant récupérées automatiquement, leur qualité peut être inégale."@fr ;
+        sh:agentInstruction "Le lien entre un Document et sa Source est ore:isAggregatedBy. Pour lister des documents, on peut afficher leur dct:title, le nom de leur auteur (dcterms:creator/foaf:name), leur date (dcterms:date) et le nom de leur source (ore:isAggregatedBy/dct:title). La plupart des métadonnées étant récupérées automatiquement, leur qualité peut être inégale."@fr ;
         sh:property     shape:Document_rightsHolder_2 , shape:Document_grantproject , shape:Document_created , shape:Document_instructionalMethod , shape:Document_description , shape:Document_modified_2 , shape:Document_educationLevel , shape:Document_language , shape:Document_grantprogram , shape:Document_format_2 , shape:Document_medium , shape:Document_alternative , shape:Document_redirect , shape:Document_replaces , shape:Document_relation , shape:Document_provenance , shape:Document_dc_ressourcetype , shape:Document_isRequiredBy , shape:Document_references , shape:Document_isFormatOf , shape:Document_subjectClassification , shape:Document_grantnumber , shape:Document_date_2 , shape:Document_type , shape:Document_tableOfContents_2 , shape:Document_contibutor , shape:Document_date , shape:Document_abstractotherlanguage , shape:Document_extent , shape:Document_subject , shape:Document_aggregates , shape:Document_conformsTo , shape:Document_dateAccepted , shape:Document_isPartOf_2 , shape:Document_dateCopyrighted , shape:Document_bibliographicCitation_2 , shape:Document_number , shape:Document_identifierdoi , shape:Document_coverage , shape:Document_embargoDate , shape:Document_contributor , shape:Document_acronym , shape:Document_issued , shape:Document_name , shape:Document_isVersionOf , shape:Document_audience , shape:Document_url , shape:Document_relationisPublisherOf , shape:Document_isPartOf , shape:Document_source , shape:Document_preview_page , shape:Document_bibliographicCitation , shape:Document_modified , shape:Document_topic , shape:Document_available , shape:Document_spatial , shape:Document_seriesnumber , shape:Document_relationisPublishedBy , shape:Document_relationisFundedBy , shape:Document_temporal , shape:Document_tableOfContents , shape:Document_website , shape:Document_similarTo , shape:Document_isAggregatedBy , shape:Document_hasPart_2 , shape:Document_coverage_2 , shape:Document_collection , shape:Document_license_2 , shape:Document_rights , shape:Document_creator , shape:Document_rightsHolder , shape:Document_relationisPartOfBook , shape:Document_placepublication , shape:Document_accessRights , shape:Document_requires , shape:Document_hasVersion , shape:Document_audience_2 , shape:Document_alternateIdentifier , shape:Document_relationhasChapter , shape:Document_language_2 , shape:Document_notes , shape:Document_title , shape:Document_imprint , shape:Document_autodoi , shape:Document_format , shape:Document_relationisbn , shape:Document_license , shape:Document_pages , shape:Document_extent_2 , shape:Document_hasPart , shape:Document_subject_2 , shape:Document_provenance_2 , shape:Document_isReferencedBy , shape:Document_identifier , shape:Document_publisher ;
         sh:targetClass  isidore:Document .
 
@@ -774,6 +778,9 @@ shape:ConceptScheme_created
 
 shape:Agent  rdf:type   sh:NodeShape ;
         rdfs:label      "Agent"@en ;
+        rdfs:label      "Agent (Personne/Organisation)"@fr ;
+        rdfs:comment "Les personnes auteur des documents ou les organisations qui peuvent être les éditeurs des sources."@fr ;
+        sh:agentInstruction "Un Agent a toujours un foaf:name qui peut être utilisé comme libellé d'affichage."@fr ;
         sh:property     shape:Agent_name , shape:Agent_givenName , shape:Agent_familyName , shape:Agent_sameAs ;
         sh:targetClass  foaf:Agent .
 
@@ -967,6 +974,9 @@ shape:ConceptScheme_hasTopConcept_class_1
 shape:Document_creator
         sh:class     foaf:Agent ;
         sh:name      "creator"@en ;
+        sh:name      "auteur"@fr ;
+        sh:description "Lien entre un document et son auteur"@fr ;
+        sh:agentInstruction "A utiliser pour traverser le graphe entre un Document et l'URI de son auteur."@fr ;
         sh:nodeKind  sh:IRI ;
         sh:path      <http://purl.org/dc/terms/creator> .
 
@@ -1863,6 +1873,9 @@ shape:Label_example  sh:datatype  xsd:string ;
 
 shape:Collection  rdf:type  sh:NodeShape ;
         rdfs:label      "Collection"@en ;
+        rdfs:label      "Collection"@fr ;
+        rdfs:comment "Ensemble de sources moisonnées par Isidore. Une collection sera par exemple un labo de recherche, une bibliothèque, une agence, une revue, etc. Exemples : Gallica, Cairn.info, Theses.fr, Agence universitaire de la francophonie, etc."@fr ;
+        sh:agentInstruction "Les collections ont toujours un titre (dct:title), une description (dct:description), un pays (geonames:countryCode), et un lien vers une URL (foaf:homepage). Tous ces attributs peuvent être sélectionnés pour donner un résultat qui liste des Collections."@fr ;
         sh:property     shape:Collection_homepage , shape:Collection_altLabel , shape:Collection_countryCode , shape:Collection_title , shape:Collection_description ;
         sh:targetClass  isidore:Collection .
 
