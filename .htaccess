@@ -1,0 +1,4 @@
+RewriteEngine on
+
+# Redirection de la base URL vers sparnatural
+RewriteRule ^$ /html/sparnatural-isidore/sparnatural/ [L,R=302]
